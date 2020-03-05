@@ -211,3 +211,8 @@ footer .container {
     color: #2196F3;
     font-size: 20px;
 }
+
+.drawer-img {
+    margin: 20px auto;
+    display: block;
+}

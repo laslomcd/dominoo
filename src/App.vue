@@ -2,7 +2,7 @@
   <div>
     <app-header />
     <div>
-      Content
+     <app-feature></app-feature>
     </div>
     <app-footer />
   </div>
@@ -12,14 +12,19 @@
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-
+import Feature from './components/Featured/Feature';
 
 export default {
 
   components: {
     'app-header': Header,
-    'app-footer': Footer
+    'app-footer': Footer,
+    'app-feature': Feature
   }
   
 }
 </script>
+
+<style>
+  @import './assets/style.css';
+</style>
