@@ -5,6 +5,7 @@
      <app-feature></app-feature>
      <app-menu></app-menu>
      <app-main></app-main>
+     <app-newsletter></app-newsletter>
     </div>
     <app-footer />
   </div>
@@ -17,6 +18,7 @@ import Footer from './components/Footer/Footer';
 import Feature from './components/Featured/Feature';
 import Menu from './components/Menu/Menu';
 import Main from './components/CallUs/Main';
+import Newsletter from './components/Newsletter/Newsletter';
 
 export default {
 
@@ -25,7 +27,8 @@ export default {
     'app-footer': Footer,
     'app-feature': Feature,
     'app-menu': Menu,
-    'app-main': Main
+    'app-main': Main,
+    'app-newsletter': Newsletter
   }
   
 }
