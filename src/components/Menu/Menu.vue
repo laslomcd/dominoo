@@ -1,0 +1,90 @@
+<template>
+	<div class="container menu_container">
+		<div class="top">
+			<h2>Menu</h2>
+		</div>
+		<div class="buttons">
+			<md-button
+				v-for="(button, index) in buttons"
+				:key="index"
+				@click="changeMenu(button.name)"
+				:class="button.active ? 'md-raised' : ''"
+			>{{ button.name }}</md-button>
+		</div>
+        <div class="products_items">
+            <md-card v-for="(product, index) in products" :key="index">
+                <md-card-media md-ratio="16:9">
+                    <img :src="require(`../../assets/images/products/${product.img}`)" alt="">
+                </md-card-media>
+                <md-card-header>
+                    <h2 class="title">{{ product.name }}</h2>
+                </md-card-header>
+            </md-card>
+        </div>
+	</div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            buttons: [
+                {
+                    name: 'pizza',
+                    active: true
+                },
+                {
+                    name: 'burgers',
+                    active: false
+                },
+                {
+                    name: 'salad',
+                    active: false
+                },
+                {
+                    name: 'dessert',
+                    active: false
+                }
+            ],
+            products: []
+        }
+    },
+    methods: {
+        changeMenu(value) {
+            this.buttons.forEach(item => {
+                if(item.name == value) {
+                    item.active = true
+                } else {
+                    item.active = false
+                }
+            })
+        }
+    },
+    created() {
+        this.$http.get('products.json')
+        .then(response => response.json())
+        .then(data => {
+            let list = [];
+            for(let key in data) {
+                list.push({
+                    ...data[key],
+                    id: key
+                })
+            }
+            this.products = list
+        })
+    }
+}
+</script>
+
+<style scoped>
+    .md-card {
+        width: 32%;
+        margin-bottom: 20px;
+    }
+    .products_items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+</style>

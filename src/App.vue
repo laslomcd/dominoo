@@ -3,6 +3,7 @@
     <app-header />
     <div>
      <app-feature></app-feature>
+     <app-menu></app-menu>
     </div>
     <app-footer />
   </div>
@@ -13,13 +14,15 @@
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Feature from './components/Featured/Feature';
+import Menu from './components/Menu/Menu';
 
 export default {
 
   components: {
     'app-header': Header,
     'app-footer': Footer,
-    'app-feature': Feature
+    'app-feature': Feature,
+    'app-menu': Menu
   }
   
 }
