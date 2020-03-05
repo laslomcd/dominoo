@@ -1,9 +1,9 @@
 <template>
 	<div class="container menu_container">
-		<div class="top">
+		<div class="top" v-scroll-reveal.reset>
 			<h2>Menu</h2>
 		</div>
-		<div class="buttons">
+		<div class="buttons" v-scroll-reveal.reset="{delay:250}">
 			<md-button
 				v-for="(button, index) in buttons"
 				:key="index"
@@ -11,14 +11,21 @@
 				:class="button.active ? 'md-raised' : ''"
 			>{{ button.name }}</md-button>
 		</div>
-        <div class="products_items">
-            <md-card v-for="(product, index) in products" :key="index">
+        <div class="products_items" v-scroll-reveal.reset="{delay:500}">
+            <md-card v-for="(product, index) in products" :key="index" v-show="product.type === activeProduct">
                 <md-card-media md-ratio="16:9">
                     <img :src="require(`../../assets/images/products/${product.img}`)" alt="">
                 </md-card-media>
                 <md-card-header>
-                    <h2 class="title">{{ product.name }}</h2>
+                    <h2 class="md-title">{{ product.name }}</h2>
+                    <div class="mc-subhead">
+                        <span>${{ product.price }}</span>
+                    </div>
                 </md-card-header>
+
+                <md-card-content>
+                    {{ product.desc }}
+                </md-card-content>
             </md-card>
         </div>
 	</div>
@@ -46,6 +53,7 @@ export default {
                     active: false
                 }
             ],
+            activeProduct: 'pizza',
             products: []
         }
     },
@@ -54,6 +62,7 @@ export default {
             this.buttons.forEach(item => {
                 if(item.name == value) {
                     item.active = true
+                    this.activeProduct = value
                 } else {
                     item.active = false
                 }

@@ -4,6 +4,7 @@
     <div>
      <app-feature></app-feature>
      <app-menu></app-menu>
+     <app-main></app-main>
     </div>
     <app-footer />
   </div>
@@ -15,6 +16,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Feature from './components/Featured/Feature';
 import Menu from './components/Menu/Menu';
+import Main from './components/CallUs/Main';
 
 export default {
 
@@ -22,7 +24,8 @@ export default {
     'app-header': Header,
     'app-footer': Footer,
     'app-feature': Feature,
-    'app-menu': Menu
+    'app-menu': Menu,
+    'app-main': Main
   }
   
 }
